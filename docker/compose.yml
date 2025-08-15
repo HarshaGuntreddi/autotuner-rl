@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    environment:
+      - DATABASE_URL=sqlite:///./autotunerl.db
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+  redis:
+    image: redis:7
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: autotunerl
+    ports:
+      - "5432:5432"

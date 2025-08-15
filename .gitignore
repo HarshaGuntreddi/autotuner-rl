@@ -1,0 +1,23 @@
+# Build
+build/
+*.o
+*.so
+*.a
+*.pyc
+__pycache__/
+.env
+.venv/
+.dist/
+*.egg-info/
+.mypy_cache/
+pytest_cache/
+.coverage
+.envrc
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.log
+
