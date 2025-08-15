@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "autotunerl"
+version = "0.1.0"
+description = "AutoTunerRL++"
+requires-python = ">=3.11"
+authors = [{name = "AutoTunerRL"}]
+dependencies = [
+    "fastapi",
+    "typer",
+    "sqlalchemy",
+    "pydantic",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "fastapi[test]",
+]
+
+[project.scripts]
+autotunerl = "autotunerl.cli:app"

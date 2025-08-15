@@ -1,0 +1,3 @@
+add_executable(test_correctness test_correctness.cpp)
+target_link_libraries(test_correctness PRIVATE autotunerl_runner)
+add_test(NAME test_correctness COMMAND test_correctness)
