@@ -1,0 +1,15 @@
+# Build and virtual env
+build/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.out
+__pycache__/
+*.pyc
+.env
+.venv/
+*.egg-info/
+*.log
+.DS_Store

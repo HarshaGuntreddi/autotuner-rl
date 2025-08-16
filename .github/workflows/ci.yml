@@ -1,0 +1,24 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: sudo apt-get update && sudo apt-get install -y ocl-icd-opencl-dev pocl-opencl-icd nlohmann-json3-dev cmake ninja-build
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python deps
+        run: pip install -e .
+      - name: Build
+        run: |
+          mkdir build && cd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja
+      - name: CTest
+        run: cd build && ctest -V
+      - name: PyTest
+        run: pytest -q

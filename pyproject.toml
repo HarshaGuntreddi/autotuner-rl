@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "autotunerl"
+version = "0.1.0"
+authors = [{name="AutoTunerRL"}]
+description = "Auto-tuner prototype"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "typer",
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "alembic",
+    "pydantic",
+    "pytest",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "fastapi[test]"]
+api = ["uvicorn"]
+
+[project.scripts]
+autotunerl = "autotunerl.cli:app"
